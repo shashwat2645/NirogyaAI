@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock title %}
+{% block body %}
+
+<section
+      class="hero d-flex align-items-center text-center text-light"
+      style="
+        background: url('/static/new.jpg') no-repeat center center/cover;
+        height: 100vh;
+        position: relative;
+      "
+    >
+      <!-- Overlay for better text visibility -->
+      <div
+        class="overlay"
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.55);
+        "
+      ></div>
+
+      <!-- Content -->
+      <div class="container position-relative">
+        <h1 class="display-4 fw-bold">
+          🌿 Ancient Wisdom, Modern Intelligence
+        </h1>
+        <p class="lead mb-4">
+          Personalized wellness designed for your unique body, mind, and
+          lifestyle.
+        </p>
+        <a href="#features" class="btn btn-success btn-lg px-4">Get Started</a>
+      </div>
+    </section>
+
+    <section class="py-5 text-center bg-light">
+      <div class="container">
+        <h2 class="text-success fw-bold">Where Ayurveda Meets AI</h2>
+        <p class="mt-3 text-muted fs-5">
+          🌿 NirogyaAI blends the wisdom of Ayurveda with modern AI to bring you
+          personalized health insights and lifestyle guidance. Start your
+          journey to balance and wellness today.
+        </p>
+        <a href="about.html" class="btn btn-success mt-3">Learn More</a>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+        <h2 class="text-center fw-bold text-success mb-5">Our Key Features</h2>
+        <div class="row g-4">
+          <!-- PrakritiAI -->
+          <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 text-center p-4">
+              <div class="card-body">
+                <div class="mb-3">
+                  <i
+                    class="bi bi-person-heart text-success"
+                    style="font-size: 2.5rem"
+                  ></i>
+                </div>
+                <h5 class="card-title fw-bold">PrakritiAI</h5>
+                <p class="card-text text-muted">
+                  Understand your unique mind-body constitution through
+                  personalized Ayurvedic profiling.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- NidaanAI -->
+          <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 text-center p-4">
+              <div class="card-body">
+                <div class="mb-3">
+                  <i
+                    class="bi bi-clipboard2-pulse text-success"
+                    style="font-size: 2.5rem"
+                  ></i>
+                </div>
+                <h5 class="card-title fw-bold">NidaanAI</h5>
+                <p class="card-text text-muted">
+                  Upload reports and get AI-driven Ayurvedic insights for
+                  preventive and curative care.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- VivekaAI -->
+          <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 text-center p-4">
+              <div class="card-body">
+                <div class="mb-3">
+                  <i
+                    class="bi bi-flower3 text-success"
+                    style="font-size: 2.5rem"
+                  ></i>
+                </div>
+                <h5 class="card-title fw-bold">VivekaAI</h5>
+                <p class="card-text text-muted">
+                  Get guided lifestyle tips, diet suggestions, and exercises
+                  tailored for your well-being.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container my-5">
+      <h2 class="text-center mb-4 fw-bold">Why Choose NirogyaAI?</h2>
+      <div class="row text-center g-4">
+        <div class="col-md-4">
+          <div class="card shadow-sm border-0 h-100 p-4">
+            <div class="mb-3">
+              <i class="bi bi-heart-pulse fs-1 text-success"></i>
+            </div>
+            <h5 class="fw-bold">Personalized Wellness</h5>
+            <p class="text-muted">
+              Get guidance tailored to your prakriti, lifestyle, and health
+              history for truly unique care.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card shadow-sm border-0 h-100 p-4">
+            <div class="mb-3">
+              <i class="bi bi-cpu fs-1 text-success"></i>
+            </div>
+            <h5 class="fw-bold">AI-Powered Insights</h5>
+            <p class="text-muted">
+              We blend Ayurveda with modern AI to give you smarter, accurate,
+              and practical recommendations.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card shadow-sm border-0 h-100 p-4">
+            <div class="mb-3">
+              <i class="bi bi-people fs-1 text-success"></i>
+            </div>
+            <h5 class="fw-bold">Holistic Support</h5>
+            <p class="text-muted">
+              Beyond reports—our approach covers diet, lifestyle, and wellness,
+              keeping balance at the core.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container my-5">
+      <div class="text-center p-5 bg-light rounded shadow-sm">
+        <blockquote class="blockquote">
+          <p class="fs-4 fst-italic text-success">
+            "Ayurveda teaches us balance, AI makes it personal. Together, they
+            empower you to live healthier every day."
+          </p>
+        </blockquote>
+        <footer class="blockquote-footer mt-2">NirogyaAI Vision</footer>
+      </div>
+    </section>
+
+    <section class="container my-5">
+      <div class="text-center p-5 bg-success text-white rounded shadow-lg">
+        <h2 class="fw-bold mb-3">Start Your Wellness Journey Today</h2>
+        <p class="mb-4">
+          Join NirogyaAI and experience the perfect balance of Ayurveda and
+          AI—personalized just for you.
+        </p>
+        <a
+          href="#services"
+          class="btn btn-light btn-lg fw-bold px-4 py-2 rounded-pill"
+        >
+          Explore Our Services
+        </a>
+      </div>
+    </section>
+{% endblock body %}

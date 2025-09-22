@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% block title %}Disease Symptom Test{% endblock title %}
+{% block body %}
+
+<div class="container py-5" style="max-width:750px; min-height:80vh;">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-4">
+            <h2 class="text-center mb-3">🩺 Symptom Assessment</h2>
+            <p class="text-muted text-center mb-4">
+                Answer the following questions honestly.  
+                This is not a diagnosis, but it helps us narrow down possible conditions.  
+            </p>
+
+            <form id="symptomForm" method="post">
+                {% csrf_token %}
+
+                <!-- General -->
+                <div class="question" style="display:block;">
+                    <p>What is your age group?</p>
+                    <label class="d-block"><input type="radio" name="age" value="child"> Child (0–12)</label>
+                    <label class="d-block"><input type="radio" name="age" value="teen"> Teen (13–19)</label>
+                    <label class="d-block"><input type="radio" name="age" value="adult"> Adult (20–59)</label>
+                    <label class="d-block"><input type="radio" name="age" value="senior"> Senior (60+)</label>
+                </div>
+
+                <div class="question" style="display:none;">
+                    <p>What is your gender?</p>
+                    <label class="d-block"><input type="radio" name="gender" value="male"> Male</label>
+                    <label class="d-block"><input type="radio" name="gender" value="female"> Female</label>
+                    <label class="d-block"><input type="radio" name="gender" value="other"> Other</label>
+                </div>
+
+                <!-- Core Symptoms -->
+                <div class="question" style="display:none;">
+                    <p>Do you have a fever?</p>
+                    <label class="d-block"><input type="radio" name="fever" value="yes"> Yes</label>
+                    <label class="d-block"><input type="radio" name="fever" value="no"> No</label>
+                </div>
+
+                <div class="question" style="display:none;">
+                    <p>Are you experiencing cough?</p>
+                    <label class="d-block"><input type="radio" name="cough" value="dry"> Dry</label>
+                    <label class="d-block"><input type="radio" name="cough" value="wet"> Wet</label>
+                    <label class="d-block"><input type="radio" name="cough" value="no"> No</label>
+                </div>
+
+                <div class="question" style="display:none;">
+                    <p>Do you feel difficulty breathing or shortness of breath?</p>
+                    <label class="d-block"><input type="radio" name="breath" value="yes"> Yes</label>
+                    <label class="d-block"><input type="radio" name="breath" value="no"> No</label>
+                </div>
+
+                <div class="question" style="display:none;">
+                    <p>Do you feel constant fatigue or weakness?</p>
+                    <label class="d-block"><input type="radio" name="fatigue" value="yes"> Yes</label>
+                    <label class="d-block"><input type="radio" name="fatigue" value="no"> No</label>
+                </div>
+
+                <div class="question" style="display:none;">
+                    <p>Are you experiencing headaches?</p>
+                    <label class="d-block"><input type="radio" name="headache" value="yes"> Yes</label>
+                    <label class="d-block"><input type="radio" name="headache" value="no"> No</label>
+                </div>
+
+                <div class="question" style="display:none;">
+                    <p>Any chest pain or pressure?</p>
+                    <label class="d-block"><input type="radio" name="chestpain" value="yes"> Yes</label>
+                    <label class="d-block"><input type="radio" name="chestpain" value="no"> No</label>
+                </div>
+
+                <div class="question" style="display:none;">
+                    <p>Do you experience nausea or vomiting?</p>
+                    <label class="d-block"><input type="radio" name="nausea" value="yes"> Yes</label>
+                    <label class="d-block"><input type="radio" name="nausea" value="no"> No</label>
+                </div>
+
+                <div class="question" style="display:none;">
+                    <p>Do you have stomach or abdominal pain?</p>
+                    <label class="d-block"><input type="radio" name="stomach" value="yes"> Yes</label>
+                    <label class="d-block"><input type="radio" name="stomach" value="no"> No</label>
+                </div>
+
+                <div class="question" style="display:none;">
+                    <p>Have you noticed rashes or skin changes?</p>
+                    <label class="d-block"><input type="radio" name="rash" value="yes"> Yes</label>
+                    <label class="d-block"><input type="radio" name="rash" value="no"> No</label>
+                </div>
+
+                <div class="question" style="display:none;">
+                    <p>What is your blood pressure status?</p>
+                    <label class="d-block"><input type="radio" name="bp" value="high"> High</label>
+                    <label class="d-block"><input type="radio" name="bp" value="normal"> Normal</label>
+                    <label class="d-block"><input type="radio" name="bp" value="low"> Low</label>
+                </div>
+
+                <div class="question" style="display:none;">
+                    <p>What is your cholesterol level?</p>
+                    <label class="d-block"><input type="radio" name="cholesterol" value="high"> High</label>
+                    <label class="d-block"><input type="radio" name="cholesterol" value="normal"> Normal</label>
+                </div>
+
+                <div class="question" style="display:none;">
+                    <p>Do you smoke or consume alcohol?</p>
+                    <label class="d-block"><input type="radio" name="habits" value="yes"> Yes</label>
+                    <label class="d-block"><input type="radio" name="habits" value="no"> No</label>
+                </div>
+
+                <div class="question" style="display:none;">
+                    <p>Do you have any known chronic conditions? (Diabetes, Hypertension, Asthma etc.)</p>
+                    <label class="d-block"><input type="radio" name="chronic" value="yes"> Yes</label>
+                    <label class="d-block"><input type="radio" name="chronic" value="no"> No</label>
+                </div>
+
+                <div class="progress my-4">
+                    <div id="progressBar" class="progress-bar bg-success" 
+                         role="progressbar" style="width: 5%;" 
+                         aria-valuenow="5" aria-valuemin="0" aria-valuemax="100">
+                        1 / 15
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="button" id="nextBtn" class="btn btn-primary px-4">Next</button>
+                    <button type="submit" id="submitBtn" class="btn btn-success px-4" style="display:none;">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    let current = 0;
+    const questions = document.querySelectorAll(".question");
+    const nextBtn = document.getElementById("nextBtn");
+    const submitBtn = document.getElementById("submitBtn");
+    const progressBar = document.getElementById("progressBar");
+
+    function updateProgress() {
+        const progress = ((current + 1) / questions.length) * 100;
+        progressBar.style.width = progress + "%";
+        progressBar.innerText = (current + 1) + " / " + questions.length;
+    }
+
+    nextBtn.addEventListener("click", () => {
+        const currentQ = questions[current];
+        const checked = currentQ.querySelector("input[type=radio]:checked");
+
+        if (!checked) {
+            alert("Please select an answer before moving ahead!");
+            return;
+        }
+
+        currentQ.style.display = "none";
+        current++;
+
+        if (current < questions.length) {
+            questions[current].style.display = "block";
+            updateProgress();
+        } else {
+            nextBtn.style.display = "none";
+            submitBtn.style.display = "inline-block";
+            updateProgress();
+        }
+    });
+
+    updateProgress();
+</script>
+
+{% endblock body %}

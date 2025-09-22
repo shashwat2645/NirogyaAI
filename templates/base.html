@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}{% endblock title %} | NirogyaAI</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="icon" type="image/png" href="/static/logo.png" />
+    <style>
+      /* Floating Button */
+      #chatbot-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #28a745;
+        color: white;
+        font-size: 24px;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        transition: transform 0.2s;
+      }
+
+      #chatbot-btn:hover {
+        transform: scale(1.1);
+      }
+
+      /* Chatbot Window */
+      #chatbot-box {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 300px;
+        height: 400px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        display: none;
+        flex-direction: column;
+        z-index: 1000;
+      }
+
+      #chatbot-header {
+        background: #28a745;
+        color: white;
+        padding: 10px;
+        border-radius: 10px 10px 0 0;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      #chatbot-messages {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+        font-size: 14px;
+      }
+
+      #chatbot-input {
+        border: none;
+        border-top: 1px solid #ddd;
+        padding: 10px;
+        width: 100%;
+        outline: none;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+     <!-- style="background: url('/static/newbg.jpg'); background-repeat: no-repeat; background-size: cover;" -->
+    <nav
+      class="navbar navbar-expand-lg shadow-sm"
+      style="background-color: #e3f2fd"
+    >
+      <div class="container-fluid">
+        <!-- Brand with Logo -->
+        <a class="navbar-brand d-flex align-items-center" href="/">
+          <img
+            src="/static/logo.png"
+            alt="NirogyaAI Logo"
+            width="40"
+            height="40"
+            class="me-2"
+          />
+          <span class="fw-bold text-success fs-5">NirogyaAI</span>
+        </a>
+
+        <!-- Toggler (Mobile) -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link fw-semibold {% if request.path == '/' %} active {% endif %}"
+                aria-current="page"
+                href="/"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-semibold {% if request.path == '/about' %} active {% endif %}" href="/about">About Us</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle fw-semibold {% if request.path == '/services' %} active {% endif %}"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Our Services
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item {% if request.path == '/test' %} active {% endif %}" href="/test">PrakritiAI</a></li>
+                <li><a class="dropdown-item" href="#">NidaanAI</a></li>
+                <li><a class="dropdown-item {% if request.path == '/health' %} active {% endif %}" href="/health">VivekaAI</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">More Services...</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-semibold {% if request.path == '/contact' %} active {% endif %}" href="/contact">Contact Us</a>
+            </li>
+          </ul>
+
+          <!-- Search + Login -->
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success me-2" type="submit">
+              Search
+            </button>
+          </form>
+          <button
+            onclick="window.location.href='/login'"
+            class="btn btn-success"
+          >
+            Login / Signup
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    {% block body %}{% endblock body %}
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+
+    <footer class="bg-dark text-light pt-5 pb-3 mt-5">
+      <div class="container">
+        <div class="row">
+          <!-- About -->
+          <div class="col-md-4 mb-3">
+            <h5 class="fw-bold">NirogyaAI</h5>
+            <p>
+              Blending the timeless wisdom of Ayurveda with the power of AI to
+              create personalized wellness for everyone.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="col-md-4 mb-3">
+            <h5 class="fw-bold">Quick Links</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#features" class="text-light text-decoration-none"
+                  >Features</a
+                >
+              </li>
+              <li>
+                <a href="#why-choose" class="text-light text-decoration-none"
+                  >Why Choose Us</a
+                >
+              </li>
+              <li>
+                <a href="#services" class="text-light text-decoration-none"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a href="contact.html" class="text-light text-decoration-none"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div class="col-md-4 mb-3">
+            <h5 class="fw-bold">Get in Touch</h5>
+            <p class="mb-1 text-white">
+              <i class="bi bi-envelope-fill me-2"></i>
+              <a
+                href="mailto:support@nirogyaai.com"
+                class="text-decoration-none text-white"
+              >
+                support@nirogyaai.com
+              </a>
+            </p>
+
+            <p class="mb-1">
+              <i class="bi bi-telephone-fill me-2"></i>
+              <a
+                href="tel:+919876543210"
+                class="text-decoration-none text-white"
+              >
+                +91 98765 43210
+              </a>
+            </p>
+            <div class="d-flex gap-3 mt-2">
+              <a href="#" class="text-light"
+                ><i class="bi bi-facebook fs-5"></i
+              ></a>
+              <a href="#" class="text-light"
+                ><i class="bi bi-twitter-x fs-5"></i
+              ></a>
+              <a href="#" class="text-light"
+                ><i class="bi bi-instagram fs-5"></i
+              ></a>
+              <a href="#" class="text-light"
+                ><i class="bi bi-linkedin fs-5"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <hr class="border-light" />
+
+        <!-- Sloka Section -->
+        <div class="text-center mb-2">
+          <p
+            class="mb-1 fw-semibold"
+            style="font-family: 'Noto Serif Devanagari', serif; font-size: 18px"
+          >
+            सर्वे भवन्तु सुखिनः, सर्वे सन्तु निरामयाः।
+          </p>
+          <p class="mb-0" style="font-size: 14px; color: #ccc">
+            May all be happy, may all be free from disease.
+          </p>
+        </div>
+
+        <div class="text-center mt-3">
+          <p class="mb-0">&copy; 2025 NirogyaAI. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Chatbot Button -->
+    <div id="chatbot-btn">💬</div>
+
+    <!-- Chatbot Box (Hidden by default) -->
+    <div id="chatbot-box">
+      <div id="chatbot-header">Ayurveda AI Assistant</div>
+      <div id="chatbot-messages">
+        <p><b>Bot:</b> Namaste 🙏 How can I help you today?</p>
+      </div>
+      <input type="text" id="chatbot-input" placeholder="Type a message..." />
+    </div>
+
+    <script>
+      // Toggle chatbot visibility
+      document
+        .getElementById("chatbot-btn")
+        .addEventListener("click", function () {
+          const box = document.getElementById("chatbot-box");
+          box.style.display = box.style.display === "flex" ? "none" : "flex";
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

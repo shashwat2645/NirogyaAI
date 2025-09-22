@@ -1,0 +1,399 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block body %}
+<!-- 
+<style>
+</style> -->
+
+
+<style>
+  body {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{% static "vd.mp4" %}') top/cover no-repeat scroll;
+  }
+  .hero-section {
+    height: 60vh;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* behaves like background-size: cover */
+    z-index: 0;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5); /* dark overlay */
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+  }
+</style>
+
+<!-- Hero Section with Video Background -->
+<section class="hero-section text-center d-flex flex-column justify-content-center align-items-center">
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="{% static 'vd.mp4' %}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Dark Overlay -->
+  <div class="hero-overlay"></div>
+
+  <!-- Content -->
+  <div class="hero-content">
+    <h1 class="fw-bold display-4">About NirogyaAI</h1>
+    <p class="lead">Blending Ancient Wisdom with Modern Intelligence</p>
+    <p class="fst-italic mt-2">सर्वे भवन्तु सुखिनः, सर्वे सन्तु निरामयाः।</p>
+  </div>
+</section>
+
+<!-- Ayurveda Overview Cards -->
+<section class="container py-5">
+  <div class="row g-4">
+    <!-- What is Ayurveda -->
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title">✨ What is Ayurveda?</h4>
+          <p class="card-text">
+            Ayurveda, literally translated as the "Science of Life," is a
+            5000-year-old Indian medical system that goes beyond curing
+            diseases—it focuses on maintaining harmony between the body,
+            mind, and soul. Unlike modern medicine which often treats only
+            symptoms, Ayurveda emphasizes prevention and holistic healing
+            through lifestyle, natural herbs, yoga, meditation, and diet.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- History of Ayurveda -->
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title">📜 History of Ayurveda</h4>
+          <p class="card-text">
+            Ayurveda finds its roots in the Vedas, especially in texts like
+            the Charaka Samhita (focused on internal medicine) and the
+            Sushruta Samhita (known for ancient surgery). For thousands of
+            years, it has guided human civilization in understanding the
+            natural connection between environment and health. Even today,
+            its principles continue to inspire a global movement towards
+            natural and sustainable healthcare.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Three Doshas -->
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title">⚖️ The Three Doshas</h4>
+          <p class="card-text">
+            Central to Ayurveda is the concept of the <b>doshas</b>—the
+            three fundamental energies governing the body:
+          </p>
+          <ul>
+            <li>
+              <b>Vata</b> — linked with movement, air, and creativity.
+            </li>
+            <li>
+              <b>Pitta</b> — linked with digestion, fire, and
+              transformation.
+            </li>
+            <li>
+              <b>Kapha</b> — linked with stability, water, and growth.
+            </li>
+          </ul>
+          <p>
+            Everyone is a unique combination of these doshas. Keeping them
+            balanced ensures energy, immunity, and overall well-being, while
+            imbalance can lead to health issues.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- About NirogyaAI -->
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title">🌿 About NirogyaAI</h4>
+          <p class="card-text">
+            NirogyaAI is your digital Ayurvedic companion, designed to bring
+            ancient wisdom to your daily lifestyle with the help of modern
+            AI. By analyzing your <b>prakriti</b> (body constitution),
+            habits, and health patterns, NirogyaAI provides personalized
+            diet charts, lifestyle advice, and wellness practices.
+          </p>
+          <p>
+            Unlike generic health platforms, we focus on YOU—your unique
+            constitution and lifestyle—so that the guidance you receive is
+            practical, holistic, and sustainable. Think of it as Ayurveda
+            reinvented for the 21st century, accessible to everyone with a
+            smartphone or computer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Our Story -->
+    <section class="container py-5">
+      <h2 class="fw-bold mb-4 text-center text-white">Our Story</h2>
+      <div class="row bg-white rounded p-4">
+        <div class="col-md-8 mx-auto text-center">
+          <p>
+            NirogyaAI is born from the idea of combining Ayurveda’s timeless
+            principles with the precision of Artificial Intelligence. In a world
+            full of generic wellness advice, we stand for personalization and
+            holistic care.
+          </p>
+          <p>
+            Our goal is simple: to make Ayurveda accessible, modern, and
+            tailored to your unique body and lifestyle.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="py-5">
+      <div class="container text-center">
+        <h2 class="fw-bold mb-5 text-white">Mission & Vision</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="p-4 shadow-sm rounded bg-white h-100">
+              <h4 class="text-success fw-bold">Our Mission</h4>
+              <p>
+                To make Ayurveda accessible and personalized through AI,
+                ensuring holistic wellness for everyone.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-4 shadow-sm rounded bg-white h-100">
+              <h4 class="text-success fw-bold">Our Vision</h4>
+              <p>
+                A healthier world where ancient wisdom and modern technology
+                work hand in hand for well-being.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Unique Features -->
+    <section class="container py-5 text-center">
+      <h2 class="fw-bold mb-5 text-white">What Makes Us Unique</h2>
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="p-4 shadow-sm rounded bg-light h-100 ">
+            🌿
+            <h5 class="fw-bold mt-3">Personalized Ayurvedic Profiles</h5>
+            <p>
+              Unique wellness journeys tailored to your prakriti and lifestyle.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="p-4 shadow-sm rounded bg-light h-100">
+            🤖
+            <h5 class="fw-bold mt-3">AI-driven Guidance</h5>
+            <p>Smart recommendations backed by data and Ayurveda principles.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="p-4 shadow-sm rounded bg-light h-100">
+            📊
+            <h5 class="fw-bold mt-3">Report Analysis</h5>
+            <p>Understand your health data with AI-driven insights.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="p-4 shadow-sm rounded bg-light h-100">
+            🌍
+            <h5 class="fw-bold mt-3">Holistic Approach</h5>
+            <p>Preventive + curative care for complete wellness.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prototypes / Services -->
+    <section class="container py-5">
+      <div class="text-center">
+        <h2 class="fw-bold mb-5 text-white">Our AI Prototypes</h2>
+        <div class="row g-4">
+          <!-- PrakritiAI -->
+          <div class="col-md-4">
+            <div class="p-4 shadow-sm rounded bg-white h-100">
+              <h4 class="text-success">PrakritiAI</h4>
+              <p>
+                Discover your unique Ayurvedic constitution (Vata, Pitta, Kapha,
+                or a mix). PrakritiAI asks simple lifestyle and health
+                questions, then uses AI to map responses to Ayurvedic
+                principles. Your prakriti profile becomes the base for all
+                personalized wellness recommendations.
+              </p>
+            </div>
+          </div>
+
+          <!-- NidaanAI -->
+          <div class="col-md-4">
+            <div class="p-4 shadow-sm rounded bg-white h-100">
+              <h4 class="text-success">NidaanAI</h4>
+              <p>
+                Your AI-powered health analyst. NidaanAI interprets your medical
+                reports and symptoms in simple terms. By identifying possible
+                dosha imbalances, it gives insights into underlying issues like
+                stress, acidity, or low energy, bridging the gap between raw
+                data and meaningful health advice.
+              </p>
+            </div>
+          </div>
+
+          <!-- VivekaAI -->
+          <div class="col-md-4">
+            <div class="p-4 shadow-sm rounded bg-white h-100">
+              <h4 class="text-success">VivekaAI</h4>
+              <p>
+                A personalized lifestyle and wellness coach. VivekaAI combines
+                your prakriti profile with health insights to suggest diets,
+                yoga, breathing exercises, and meditation practices. It ensures
+                your daily routine stays balanced and aligned with Ayurvedic
+                wisdom for long-term well-being.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="container py-5 text-center">
+      <h2 class="fw-bold mb-5 text-white">Meet the Team</h2>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-3">
+          <div class="p-4 shadow-sm rounded bg-light h-100">
+            <img
+              src="https://media.licdn.com/dms/image/v2/D4E03AQGFIlB30QIeXg/profile-displayphoto-shrink_200_200/B4EZbIRwxHGQAc-/0/1747116822111?e=1759968000&v=beta&t=8XbwhMhzsPtqnb00a9jEPBxUrA8S_nOi3xu7Uuag6HY"
+              class="rounded-circle mb-3"
+              alt="Shashwat"
+              width="100"
+              height="100"
+            />
+            <h5 class="fw-bold">Shashwat Singh</h5>
+            <a
+              href="https://www.linkedin.com/in/singhshashwat2645/"
+              target="_blank"
+              class="text-decoration-none text-success"
+              >View LinkedIn Profile ↗</a
+            >
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="p-4 shadow-sm rounded bg-light h-100">
+            <img
+              src="https://media.licdn.com/dms/image/v2/D5635AQE-qtKzqUkyQQ/profile-framedphoto-shrink_200_200/profile-framedphoto-shrink_200_200/0/1736952493782?e=1757934000&v=beta&t=3YoxM60Iz2jP07WFiPMjzgqn4eUKONONqdRzjlocyuE"
+              class="rounded-circle mb-3"
+              alt="Shauryavi"
+              width="100"
+              height="100"
+            />
+            <h5 class="fw-bold">Shauryavi Katiyar</h5>
+            <a
+              href="https://www.linkedin.com/in/shauryavi-katiyar-910246297/"
+              target="_blank"
+              class="text-decoration-none text-success"
+              >View LinkedIn Profile ↗</a
+            >
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="p-4 shadow-sm rounded bg-light h-100">
+            <img
+              src="https://media.licdn.com/dms/image/v2/D5603AQF0-qdt6y9XTA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1716099119029?e=1759968000&v=beta&t=CLmoa9Sq628PNvtfS2yPKU4WQBaliYkAgBmGuLLXeTM"
+              class="rounded-circle mb-3"
+              alt="Sriom"
+              width="100"
+              height="100"
+            />
+            <h5 class="fw-bold">Sriom Gupta</h5>
+            <a
+              href="https://www.linkedin.com/in/sriom-gupta-052034256/"
+              target="_blank"
+              class="text-decoration-none text-success"
+              >View LinkedIn Profile ↗</a
+            >
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="p-4 shadow-sm rounded bg-light h-100">
+            <img
+              src="https://media.licdn.com/dms/image/v2/D5603AQEwx2FxXRbwqw/profile-displayphoto-scale_200_200/B56ZjcdyL2IEAY-/0/1756045472909?e=1759968000&v=beta&t=f-Eq-9YU4DqfSbZu9glFNmfWNqMPJD-Ihm4SizZNIF0"
+              class="rounded-circle mb-3"
+              alt="Vidhi"
+              width="100"
+              height="100"
+            />
+            <h5 class="fw-bold">Vidhi Arora</h5>
+            <a
+              href="https://www.linkedin.com/in/vidhi-arora-6a112b274/"
+              target="_blank"
+              class="text-decoration-none text-success"
+              >View LinkedIn Profile ↗</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section
+      class="text-center text-light py-5"
+      style="background-color: #2d6a4f"
+    >
+      <h2 class="fw-bold">Join Us on the Journey to Wellness</h2>
+      <p class="mb-4">Be part of a future where technology meets tradition.</p>
+      <a href="#contact" class="btn btn-light btn-lg">Get Started</a>
+    </section>
+
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

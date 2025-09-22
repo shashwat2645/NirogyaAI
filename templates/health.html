@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Disease Symptom Test{% endblock title %}
+{% block body %}
+
+<div class="d-flex justify-content-center align-items-center" style="min-height:80vh;">
+    <div class="card shadow-lg border-0 rounded-4" style="max-width:600px; width:100%;">
+        <div class="card-body p-5 text-center">
+            <h2 class="mb-4">📑 Upload Your Medical Report</h2>
+            <p class="text-muted mb-4">
+                Please upload your report in PDF format.  
+                Our system will analyze it and provide insights.  
+            </p>
+            <form action="/health" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <input class="form-control" type="file" name="report" accept="application/pdf" required>
+                </div>
+                <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill shadow-sm">
+                    Upload Report
+                </button>
+            </form>
+
+            
+  {% if text %}
+  <div class="mt-5 text-start">
+    <h4>📊 Extracted Text:</h4>
+    <pre style="white-space: pre-wrap; background:#f8f9fa; padding:15px;">{{ text }}</pre>
+
+    <h4 class="mt-4">🔎 Findings:</h4>
+    <ul>
+      {% for f in findings %}
+        <li>{{ f }}</li>
+      {% empty %}
+        <li>No major issues detected</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
